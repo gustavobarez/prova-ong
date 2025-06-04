@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Necessidades - Conexão Voluntária</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Conexão Voluntária</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cadastrar.html">Cadastrar Necessidade</a></li>
+                    <li><a href="visualizar.html">Ver Necessidades</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Encontre uma Oportunidade</h2>
+            <p>Use os filtros abaixo para encontrar a causa que mais combina com você.</p>
+
+            <div class="filtros">
+                <input type="search" id="pesquisa" placeholder="Pesquisar por palavra-chave...">
+                <select id="filtro-tipo">
+                    <option value="">Filtrar por Tipo de Ajuda</option>
+                    <option value="Todos">Todos</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Saúde">Saúde</option>
+                    <option value="Meio Ambiente">Meio Ambiente</option>
+                    <option value="Doação de Alimentos">Doação de Alimentos</option>
+                    <option value="Doação de Roupas">Doação de Roupas</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <div id="lista-necessidades" class="cards-container">
+                </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Conexão Voluntária. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
