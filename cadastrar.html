@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Necessidade - Conexão Voluntária</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Conexão Voluntária</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cadastrar.html">Cadastrar Necessidade</a></li>
+                    <li><a href="visualizar.html">Ver Necessidades</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Cadastro de Necessidade</h2>
+            <p>Preencha o formulário abaixo para divulgar uma oportunidade de voluntariado ou doação.</p>
+            
+            <form id="form-necessidade">
+                <div class="form-group">
+                    <label for="nomeInstituicao">Nome da Instituição *</label>
+                    <input type="text" id="nomeInstituicao" name="nomeInstituicao" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoAjuda">Tipo de Ajuda *</label>
+                    <select id="tipoAjuda" name="tipoAjuda" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="Educação">Educação</option>
+                        <option value="Saúde">Saúde</option>
+                        <option value="Meio Ambiente">Meio Ambiente</option>
+                        <option value="Doação de Alimentos">Doação de Alimentos</option>
+                        <option value="Doação de Roupas">Doação de Roupas</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="titulo">Título da Necessidade *</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ex: Ajuda com reforço escolar" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição Detalhada *</label>
+                    <textarea id="descricao" name="descricao" rows="5" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="cep">CEP *</label>
+                    <input type="text" id="cep" name="cep" placeholder="Apenas números" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rua">Rua</label>
+                    <input type="text" id="rua" name="rua" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" name="estado" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="contato">E-mail ou Telefone para Contato *</label>
+                    <input type="text" id="contato" name="contato" required>
+                </div>
+
+                <button type="submit" class="btn-principal">Cadastrar Necessidade</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Conexão Voluntária. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
