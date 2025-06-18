@@ -49,5 +49,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const listaNecessidades = document.getElementById('lista-necessidades');
+    if (listaNecessidades) {
+        const campoPesquisa = document.getElementById('pesquisa');
+        const filtroTipo = document.getElementById('filtro-tipo');
+
+        const carregarNecessidades = () => {
+            const necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
+            
+            const termoPesquisa = campoPesquisa.value.toLowerCase();
+            const tipoSelecionado = filtroTipo.value;
+
+            const necessidadesFiltradas = necessidades.filter(necessidade => {
+                const atendePesquisa = necessidade.titulo.toLowerCase().includes(termoPesquisa) || necessidade.descricao.toLowerCase().includes(termoPesquisa);
+                const atendeFiltroTipo = (tipoSelecionado === "" || tipoSelecionado === "Todos" || necessidade.tipo === tipoSelecionado);
+                return atendePesquisa && atendeFiltroTipo;
+            });
+
+            listaNecessidades.innerHTML = ''; 
+
+            if (necessidadesFiltradas.length === 0) {
+                listaNecessidades.innerHTML = '<p>Nenhuma necessidade encontrada com os critérios selecionados.</p>';
+                return;
+            }
+
+            necessidadesFiltradas.forEach(necessidade => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>${necessidade.titulo}</h3>
+                    <span class="card-tipo">${necessidade.tipo}</span>
+                    <p><strong>Instituição:</strong> ${necessidade.instituicao}</p>
+                    <p>${necessidade.descricao}</p>
+                    <p><strong>Local:</strong> ${necessidade.endereco}</p>
+                    <p><strong>Contato:</strong> ${necessidade.contato}</p>
+                `;
+                listaNecessidades.appendChild(card);
+            });
+        };
+
+        campoPesquisa.addEventListener('input', carregarNecessidades);
+        filtroTipo.addEventListener('change', carregarNecessidades);
+
+        carregarNecessidades();
     }
 });
