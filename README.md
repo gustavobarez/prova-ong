@@ -1,4 +1,4 @@
-# Plataforma de Conexão Voluntária Local
+# Plataforma Semente de Esperança
 
 ## 📖 Descrição
 Este projeto é uma plataforma web front-end desenvolvida para conectar ONGs e instituições sociais a voluntários dispostos a ajudar. A aplicação nasceu da necessidade de modernizar e centralizar a captação de ajuda, que antes era feita de forma manual e descentralizada.
@@ -8,7 +8,7 @@ O objetivo é oferecer uma ferramenta simples, intuitiva e acessível onde insti
 ## 🚀 Demonstração
 Você pode visualizar o projeto em funcionamento no link abaixo:
 
-[Acesse a demonstração](gustavobarez.github.io/prova-ong/)
+[Acesse a demonstração](https://gustavobarez.github.io/prova-ong)
 
 ## ✨ Funcionalidades
 Página Inicial (Home): Apresentação clara e objetiva do propósito da plataforma.
