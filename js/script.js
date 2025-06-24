@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         formNecessidade.addEventListener('submit', (event) => {
             event.preventDefault();
 
+            // Validação simples (ex: campos vazios) já é feita com 'required' no HTML.
+            // Validações mais complexas (formato de e-mail/telefone) podem ser adicionadas aqui.
+
             const novaNecessidade = {
                 id: Date.now(),
                 instituicao: document.getElementById('nomeInstituicao').value,
@@ -40,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 contato: document.getElementById('contato').value
             };
             
+            // Armazenamento dos dados no localStorage
+            // O localStorage permite que os dados persistam no navegador do usuário.
+            // Nota: Isso é um armazenamento local. Os dados não são compartilhados entre diferentes usuários.
             const necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
             necessidades.push(novaNecessidade);
             localStorage.setItem('necessidades', JSON.stringify(necessidades));
@@ -49,23 +55,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- LÓGICA DA PÁGINA DE VISUALIZAÇÃO ---
     const listaNecessidades = document.getElementById('lista-necessidades');
     if (listaNecessidades) {
         const campoPesquisa = document.getElementById('pesquisa');
         const filtroTipo = document.getElementById('filtro-tipo');
 
+        // Função para carregar e exibir os cards
         const carregarNecessidades = () => {
             const necessidades = JSON.parse(localStorage.getItem('necessidades')) || [];
             
+            // Pega os valores atuais dos filtros
             const termoPesquisa = campoPesquisa.value.toLowerCase();
             const tipoSelecionado = filtroTipo.value;
 
+            // Filtra as necessidades
             const necessidadesFiltradas = necessidades.filter(necessidade => {
                 const atendePesquisa = necessidade.titulo.toLowerCase().includes(termoPesquisa) || necessidade.descricao.toLowerCase().includes(termoPesquisa);
                 const atendeFiltroTipo = (tipoSelecionado === "" || tipoSelecionado === "Todos" || necessidade.tipo === tipoSelecionado);
                 return atendePesquisa && atendeFiltroTipo;
             });
 
+            // Limpa a lista antes de exibir os resultados
             listaNecessidades.innerHTML = ''; 
 
             if (necessidadesFiltradas.length === 0) {
@@ -73,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Cria e insere o HTML para cada card
             necessidadesFiltradas.forEach(necessidade => {
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -88,9 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
+        // Adiciona "event listeners" para os filtros para recarregar a lista quando eles mudarem
         campoPesquisa.addEventListener('input', carregarNecessidades);
         filtroTipo.addEventListener('change', carregarNecessidades);
 
+        // Carrega as necessidades ao abrir a página
         carregarNecessidades();
     }
 });
